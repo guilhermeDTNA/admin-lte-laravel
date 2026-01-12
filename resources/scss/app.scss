@@ -2,3 +2,8 @@
 @import 'admin-lte';
 @import 'overlayscrollbars/styles/overlayscrollbars.css';
 @import 'bootstrap-icons';
+
+
+.user-footer:after{
+  display: none !important;
+}

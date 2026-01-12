@@ -180,9 +180,12 @@
           </li>
           <!--end::Menu Body-->
           <!--begin::Menu Footer-->
-          <li class="user-footer">
+          <li class="user-footer d-flex align-items-center justify-content-between">
             <a href="#" class="btn btn-outline-secondary">Profile</a>
-            <a href="#" class="btn btn-outline-danger float-end">Sign out</a>
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <button type="submit" class="btn btn-outline-danger float-end">Logout</button>
+            </form>
           </li>
           <!--end::Menu Footer-->
         </ul>
