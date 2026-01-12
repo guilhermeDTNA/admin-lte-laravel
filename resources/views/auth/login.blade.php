@@ -3,7 +3,7 @@
 @section('content')
   <div class="login-box">
     <div class="login-logo">
-      <a href="../index2.html"><b>Admin</b>LTE</a>
+      <a href="{{ route('login') }}"><b>Admin</b>LTE</a>
     </div>
     <!-- /.login-logo -->
     <div class="card">
@@ -67,10 +67,10 @@
         <!-- /.social-auth-links -->
 
         <p class="mb-1">
-          <a href="forgot-password">I forgot my password</a>
+          <a href="{{ route('password.request') }}">I forgot my password</a>
         </p>
         <p class="mb-0">
-          <a href="register" class="text-center"> Register a new membership </a>
+          <a href="{{ route('register') }}" class="text-center"> Register a new membership </a>
         </p>
       </div>
       <!-- /.login-card-body -->

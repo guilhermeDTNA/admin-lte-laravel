@@ -3,7 +3,7 @@
 @section('content')
   <div class="login-box">
     <div class="login-logo">
-      <a href="../index2.html"><b>Admin</b>LTE</a>
+      <a href="{{ route('login') }}"><b>Admin</b>LTE</a>
     </div>
     <!-- /.login-logo -->
     <div class="card">
@@ -28,7 +28,7 @@
           </div>
           <div class="col-12">
             <div class="d-grid gap-2">
-              <button type="submit" class="btn btn-primary">Send Password Reset Link</button>
+              <button type="submit" class="btn btn-primary">Reset password</button>
             </div>
           </div>
       </div>
