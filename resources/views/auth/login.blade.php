@@ -10,6 +10,10 @@
       <div class="card-body login-card-body">
         <p class="login-box-msg">Login to start your session</p>
 
+        @session('status')
+          <div class="alert alert-success" role="alert">{{ $value }}</div>
+        @endsession
+
         <form action="{{ route('login') }}" method="post">
           @csrf
           <div class="input-group mb-3">
@@ -63,10 +67,10 @@
         <!-- /.social-auth-links -->
 
         <p class="mb-1">
-          <a href="forgot-password.html">I forgot my password</a>
+          <a href="forgot-password">I forgot my password</a>
         </p>
         <p class="mb-0">
-          <a href="register.html" class="text-center"> Register a new membership </a>
+          <a href="register" class="text-center"> Register a new membership </a>
         </p>
       </div>
       <!-- /.login-card-body -->

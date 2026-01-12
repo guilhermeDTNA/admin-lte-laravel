@@ -35,6 +35,12 @@ $ sail npm install
 $ sail artisan migrate
 ```
 
+### Comandos úteis
+
+```bash
+$ sail artisan route:list
+```
+
 ### iniciando o ambiente de desenvolvimento
 
 ```bash
