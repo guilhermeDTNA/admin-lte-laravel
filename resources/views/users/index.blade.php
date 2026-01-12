@@ -1,13 +1,15 @@
 @extends('layouts.default')
 @section('page-title', 'Usuários')
 @section('page-actions')
-  <a href="#" class="btn btn-primary">Adicionar</a>
+  <a href="{{ route('users.create') }}" class="btn btn-primary">Adicionar</a>
 @endsection
-@php
-  $breadcrumbs = [['label' => 'Home', 'url' => '/'], ['label' => 'Dashboard', 'url' => '/']];
-@endphp
 
 @section('content')
+  @session('status')
+    <div class="alert alert-success">
+      {{ $value }}
+    </div>
+  @endsession
   <table class="table">
     <thead>
       <tr>
