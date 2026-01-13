@@ -49,6 +49,12 @@ class UserController extends Controller
         $user->fill($input);
         $user->save();
 
-        return back()->with('status', 'User updated successfully!');
+        return redirect()->route('users.index')->with('status', 'User updated successfully!');
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return redirect()->route('users.index')->with('status', 'User deleted successfully!');
     }
 }
