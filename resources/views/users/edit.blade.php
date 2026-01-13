@@ -7,41 +7,8 @@
       {{ $value }}
     </div>
   @endsession
-  <form action="{{ route('users.update', $user->id) }}" method="POST">
-    @csrf
-    @method('PUT')
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
-        placeholder="Enter name" value="{{ old('name') ?? $user->name }}">
-      @error('name')
-        <div class="invalid-feedback">
-          {{ $message }}
-        </div>
-      @enderror
-    </div>
 
-    <div class="form-group">
-      <label for="email">Email address</label>
-      <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email"
-        placeholder="Enter email" value="{{ old('email') ?? $user->email }}">
-      @error('email')
-        <div class="invalid-feedback">
-          {{ $message }}
-        </div>
-      @enderror
-    </div>
-
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password"
-        placeholder="Enter password">
-      @error('password')
-        <div class="invalid-feedback">
-          {{ $message }}
-        </div>
-      @enderror
-    </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-  </form>
+  @include('users.parts.basic-details')
+  <br />
+  @include('users.parts.profile')
 @endsection

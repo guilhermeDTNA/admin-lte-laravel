@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -35,6 +36,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        $user->load('profile');
         return view('users.edit', compact('user'));
     }
 
@@ -50,6 +52,24 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->route('users.index')->with('status', 'User updated successfully!');
+    }
+
+    public function updateProfile(User $user, Request $request)
+    {
+        $input = $request->validate([
+            'type' => 'required',
+            'address' => 'nullable',
+        ]);
+
+        UserProfile::updateOrCreate(
+            ['user_id' => $user->id],
+            [
+                'type' => $input['type'],
+                'address' => $input['address'] ?? null,
+            ]
+        );
+
+        return redirect()->route('users.index')->with('status', 'User profile updated successfully!');
     }
 
     public function destroy(User $user)
