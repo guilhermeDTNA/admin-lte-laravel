@@ -1,13 +1,19 @@
 @extends('layouts.default')
-@section('page-title', 'Adicionar Usuário')
+@section('page-title', 'Editar Usuário')
 
 @section('content')
-  <form action="{{ route('users.store') }}" method="POST">
+  @session('status')
+    <div class="alert alert-success">
+      {{ $value }}
+    </div>
+  @endsession
+  <form action="{{ route('users.update', $user->id) }}" method="POST">
     @csrf
+    @method('PUT')
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
-        placeholder="Enter name" value="{{ old('name') }}">
+        placeholder="Enter name" value="{{ old('name') ?? $user->name }}">
       @error('name')
         <div class="invalid-feedback">
           {{ $message }}
@@ -18,7 +24,7 @@
     <div class="form-group">
       <label for="email">Email address</label>
       <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email"
-        placeholder="Enter email" value="{{ old('email') }}">
+        placeholder="Enter email" value="{{ old('email') ?? $user->email }}">
       @error('email')
         <div class="invalid-feedback">
           {{ $message }}
@@ -36,6 +42,6 @@
         </div>
       @enderror
     </div>
-    <button type="submit" class="btn btn-primary">Add</button>
+    <button type="submit" class="btn btn-primary">Save</button>
   </form>
 @endsection

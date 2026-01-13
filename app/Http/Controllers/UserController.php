@@ -32,4 +32,23 @@ class UserController extends Controller
             'users.index'
         )->with('status', 'User created successfully!');
     }
+
+    public function edit(User $user)
+    {
+        return view('users.edit', compact('user'));
+    }
+
+    public function update(Request $request, User $user)
+    {
+        $input = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'password' => 'exclude_if:password,null|string|min:8'
+        ]);
+
+        $user->fill($input);
+        $user->save();
+
+        return back()->with('status', 'User updated successfully!');
+    }
 }

@@ -26,7 +26,7 @@
           <td>{{ $user->name }}</td>
           <td>{{ $user->email }}</td>
           <td>
-            <a class="btn btn-primary btn-sm">Editar</a>
+            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-sm">Editar</a>
             <a class="btn btn-danger btn-sm">Excluir</a>
           </td>
         </tr>
